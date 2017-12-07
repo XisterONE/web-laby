@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table id="tbl">
+       
+    </table>
+    <br>
+    <h2 id="sum">Сумма: </h2>
+
+</body>
+<script>
+
+    var objArray = [
+    {image: "pen.jpg", description: "Ручка", price: 50}, 
+    {image: "pencil.png", description: "Карандаш", price: 20},
+    {image: "paper.jpg", description: "Тетрадь", price: 150},
+    
+        ];    
+
+    function LoadList()
+    {
+        var outstring = "<thead><td>Изображение&nbsp&nbsp</td>\
+        <td>Наименование&nbsp&nbsp</td>\
+        <td>Цена &nbsp&nbsp&nbsp</td>\
+        <td>Добавить в карзину</td>\
+        </thead>"
+
+        for(var q=0; q<objArray.length;q++)
+        {
+        
+            outstring+="<tr>\
+            <td> <img src='" + objArray[q].image +"' height='60' alt=''> </td>\
+            <td> " +  objArray[q].description  + "</td>\
+            <td> " + objArray[q].price  + " </td>\
+            <td><input type='number' onclick='GetSum()' value='0' min=0 id='id" + q + "'></td>\
+        </tr>"
+        }
+        document.getElementById("tbl").innerHTML = outstring;
+        
+        
+    }
+    LoadList();
+
+
+    function GetSum()
+    {
+   var sum=0;
+        for(var q=0; q<objArray.length;q++)
+        {
+           sum+= parseInt(document.getElementById("id"+q).value)*objArray[q].price;
+        }
+
+    
+        document.getElementById("sum").innerText =  "Сумма: " + sum + "р";
+    }
+
+
+   
+    </script>
+
+</html>
